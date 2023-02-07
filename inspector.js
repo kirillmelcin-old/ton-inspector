@@ -19,7 +19,7 @@ async function findTransaction(destination = '', value = 0, msg = '', retries = 
   const url_request = `https://toncenter.com/api/v2/getTransactions?address=${destination}&limit=1&to_lt=0&archival=true&api_key=${api_key}`
 
   let count_i = 0
-  const time_i = 1 * 1000     // Интервал между проверками в милисекундах (default: 2 * 1000)
+  const time_i = 2 * 1000     // interval between checks in miliseconds (default: 2 * 1000)
 
   function fetchTransaction() {
     axios.get(url_request)
@@ -85,6 +85,7 @@ function paymentLink(destination, value, msg) {
 }
 
 function convertTonToNano(value) {
+  if (!value) throw new Error('Please set the amount of TON.')
   return value * 1000000000
 }
 
