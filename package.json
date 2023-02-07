@@ -1,6 +1,6 @@
 {
   "name": "ton-inspector",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Easily find and confirm TON Blockchain transactions.",
   "main": "inspector.js",
   "scripts": {
