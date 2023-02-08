@@ -120,7 +120,7 @@ console.log(link) // ton://transfer/EQD3I34Ce9RpdNEpgoUB5dgWvywD4dSTVea4g2Da7eW-
 
 Simple donation page
 
-![Donation page image](https://github.com/kirillmelcin/ton-inspector/blob/main/examples/donation/donation.jpg?raw=true)
+![Donation page image](https://github.com/kirillmelcin/ton-inspector/blob/main/examples/donation/donation.JPG?raw=true)
 
 [Demo](https://kirillmelcin.ru/ton-inspector/) - [Code](https://github.com/kirillmelcin/ton-inspector/blob/main/examples/donation/DonateBlock.vue)
 
