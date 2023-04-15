@@ -95,7 +95,7 @@ console.log(inspector.randomMsg()) // 7XL8Q
 console.log(inspector.randomMsg(7)) // LF541AR
 ```
 
-**generateLink(_destination, amount, message_)**
+**paymentLink(_destination, amount, message_)**
 
 This function generates payment link. For example, you can use the link in QR code or in a payment button. Link opens up TON Coin wallet app (e.g. Tonkeeper, Tonhub) with pre-generated transaction.
 See examples for more info.
