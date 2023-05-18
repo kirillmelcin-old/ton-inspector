@@ -14,9 +14,8 @@ async function findTransaction(destination = '', value = 0, msg = '', retries = 
   if (retries > 20) throw new Error('Maximum number of retries is 20.')
   if (retries < 1) throw new Error('Minimum number of retries is 1.')
 
-
   let source = ''  // source wallet must be returned later
-  const url_request = `https://toncenter.com/api/v2/getTransactions?address=${destination}&limit=1&to_lt=0&archival=true&api_key=${api_key}`
+  const url_request = `https://toncenter.com/api/v2/getTransactions?address=${destination}&limit=10&to_lt=0&archival=true&api_key=${api_key}`
 
   let count_i = 0
   const time_i = 2 * 1000     // interval between checks in miliseconds (default: 2 * 1000)
@@ -24,12 +23,16 @@ async function findTransaction(destination = '', value = 0, msg = '', retries = 
   function fetchTransaction() {
     axios.get(url_request)
       .then(response => {
-        const transaction_data = response.data.result[0]
-        // checking if there any incoming message
-        if (transaction_data.in_msg.source != "") {
-          // then check if we found the right transaction (if no - promise will reject)
-          if (msg == transaction_data.in_msg.message && value == transaction_data.in_msg.value) {
-            source = transaction_data.in_msg.source
+        const transactions_number = response.data.result.length
+        for(let i = 0; i < transactions_number; i++){
+          const transaction_data = response.data.result[i]
+          // checking if there any incoming message
+          if (transaction_data.in_msg.source != "") {
+            // then check if we found the right transaction (if no - promise will reject)
+            if (msg == transaction_data.in_msg.message && value == transaction_data.in_msg.value) {
+              source = transaction_data.in_msg.source
+              break
+            }
           }
         }
       })
